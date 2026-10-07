@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customized Jewellery</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+            overflow-x: hidden;
+        }
+        /* ================= HEADER ================= */
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 7%;
+            background: rgba(8, 8, 8, 0.80);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            z-index: 1000;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .brand-logo {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            background: white;
+            padding: 3px;
+        }
+        
+        .brand-name {
+            font-size: 19px;
+            font-weight: bold;
+        }
+        
+        .brand-name span {
+            color: #d4af37;
+        }
+        
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        
+        nav a:hover {
+            color: #d4af37;
+        }
+        /* ================= HERO ================= */
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 8% 70px;
+            background: radial-gradient( circle at 80% 30%, rgba(212, 175, 55, 0.20), transparent 30%), radial-gradient( circle at 20% 80%, rgba(212, 175, 55, 0.08), transparent 30%), #080808;
+        }
+        
+        .hero-content {
+            max-width: 720px;
+            animation: fadeUp 1s ease;
+        }
+        
+        .small-title {
+            color: #d4af37;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 85px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+        
+        .hero h1 span {
+            color: #d4af37;
+        }
+        
+        .hero p {
+            max-width: 600px;
+            color: #aaa;
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .gold-btn {
+            background: #d4af37;
+            color: #111;
+            border: none;
+        }
+        
+        .gold-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .outline-btn {
+            border: 1px solid #d4af37;
+            color: #d4af37;
+        }
+        
+        .outline-btn:hover {
+            background: #d4af37;
+            color: #111;
+        }
+        /* ================= COMMON SECTION ================= */
+        
+        section {
+            padding: 100px 8%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+        
+        .section-title small {
+            color: #d4af37;
+            letter-spacing: 3px;
+        }
+        
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 10px;
+        }
+        
+        .section-title p {
+            color: #888;
+            margin-top: 12px;
+        }
+        /* ================= COLLECTIONS ================= */
+        
+        .collections {
+            background: #101010;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .category-card {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #191919, #0d0d0d);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            transition: 0.4s;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .category-image {
+            width: 180px;
+            height: 190px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            transition: 0.4s;
+            filter: drop-shadow( 0 10px 20px rgba(212, 175, 55, 0.15));
+        }
+        
+        .category-card:hover .category-image {
+            transform: scale(1.08);
+        }
+        
+        .category-card h3 {
+            font-size: 20px;
+        }
+        /* ================= CUSTOMIZE ================= */
+        
+        .customize {
+            background: linear-gradient(90deg, #080808, #171309);
+        }
+        
+        .customize-box {
+            max-width: 1000px;
+            margin: auto;
+            padding: 65px 40px;
+            text-align: center;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .customize-box h2 {
+            font-size: 45px;
+            margin: 15px 0 20px;
+        }
+        
+        .customize-box h2 span {
+            color: #d4af37;
+        }
+        
+        .customize-box p {
+            color: #999;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+        /* ================= PRODUCTS ================= */
+        
+        .products {
+            background: #080808;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: 0.4s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+        }
+        
+        .product-image {
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient( circle, #332b16, #111 65%);
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 85%;
+            height: 90%;
+            object-fit: contain;
+            transition: 0.4s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+        
+        .product-info {
+            padding: 22px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 8px;
+        }
+        
+        .product-info p {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            color: #d4af37;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        /* ================= WHY US ================= */
+        
+        .why-us {
+            background: #101010;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        .feature {
+            padding: 35px;
+            background: #151515;
+            border-radius: 20px;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+        
+        .feature:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            margin-bottom: 12px;
+        }
+        
+        .feature p {
+            color: #999;
+            line-height: 1.7;
+        }
+        /* ================= CONTACT ================= */
+        
+        .contact {
+            background: #080808;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+        
+        .contact-info {
+            padding: 40px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #191919, #0d0d0d);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .contact-info h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info h3 span {
+            color: #d4af37;
+        }
+        
+        .contact-info p {
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .contact-detail {
+            margin-bottom: 18px;
+            color: #bbb;
+        }
+        
+        .contact-detail strong {
+            color: #d4af37;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .contact-form {
+            padding: 40px;
+            border-radius: 25px;
+            background: #111;
+            border: 1px solid #222;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: #080808;
+            color: white;
+            border: 1px solid #333;
+            border-radius: 10px;
+            outline: none;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+        
+        .form-group select option {
+            background: #111;
+            color: white;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            background: #d4af37;
+            color: #111;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        #formMessage {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            text-align: center;
+        }
+        /* ================= FOOTER ================= */
+        
+        footer {
+            padding: 50px 8% 25px;
+            background: #050505;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+        
+        footer h2 {
+            color: #d4af37;
+            margin-bottom: 12px;
+        }
+        
+        footer p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            font-size: 13px;
+            color: #555;
+        }
+        /* ================= TOP BUTTON ================= */
+        
+        #topBtn {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #d4af37;
+            color: #111;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+        }
+        /* ================= SCROLL ANIMATION ================= */
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* ================= HERO ANIMATION ================= */
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* ================= MOBILE ================= */
+        
+        @media(max-width: 900px) {
+            nav {
+                display: none;
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media(max-width: 600px) {
+            section {
+                padding: 75px 6%;
+            }
+            .hero {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            .customize-box {
+                padding: 40px 20px;
+            }
+            .customize-box h2 {
+                font-size: 32px;
+            }
+            .brand-name {
+                font-size: 15px;
+            }
+            .contact-info,
+            .contact-form {
+                padding: 25px;
+            }
+            .section-title h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="brand">
+
+            <img src="shravni/WhatsApp Image 2026-10-06 at 11.51.24 AM.png" class="brand-logo" alt="Customized Jewellery Logo">
+
+            <div class="brand-name">
+                Customized
+                <span>Jewellery</span>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="#home">Home</a>
+            <a href="#collections">Collections</a>
+            <a href="#customize">Customize</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                ✦ PERSONALIZED JEWELLERY ✦
+            </div>
+
+            <h1>
+                Jewellery
+                <br> Made
+                <span>Just For You.</span>
+            </h1>
+
+            <p>
+                Create something truly personal. Customize your jewellery with names, initials, special dates and meaningful designs.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#customize" class="btn gold-btn">
+                    Customize Now
+                </a>
+
+                <a href="#collections" class="btn outline-btn">
+                    Explore Collection
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= COLLECTIONS ================= -->
+
+    <section class="collections reveal" id="collections">
+
+        <div class="section-title">
+
+            <small>OUR COLLECTION</small>
+
+            <h2>Choose Your Style</h2>
+
+            <p>
+                Discover jewellery made to match your personality.
+            </p>
+
+        </div>
+
+        <div class="category-grid">
+
+            <div class="category-card">
+
+                <img src="shravni/shravni ring.png" class="category-image" alt="Customized Ring">
+
+                <h3>Rings</h3>
+
+            </div>
+
+            <div class="category-card">
+
+                <img src="shravni/shravni necless.png" class="category-image" alt="Customized Necklace">
+
+                <h3>Necklaces</h3>
+
+            </div>
+
+            <div class="category-card">
+
+                <img src="shravni/shravni breslet.png" class="category-image" alt="Customized Bracelet">
+
+                <h3>Bracelets</h3>
+
+            </div>
+
+            <div class="category-card">
+
+                <img src="shravni/shravni earings.png" class="category-image" alt="Customized Earrings">
+
+                <h3>Earrings</h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= CUSTOMIZE ================= -->
+
+    <section class="customize reveal" id="customize">
+
+        <div class="customize-box">
+
+            <div class="small-title">
+                MAKE IT PERSONAL
+            </div>
+
+            <h2>
+                Create Your
+                <span>Dream Jewellery</span>
+            </h2>
+
+            <p>
+                Select your jewellery type and personalize it with your name, initials, photo, engraving, material and design.
+            </p>
+
+            <a href="#contact" class="btn gold-btn">
+                Start Customizing
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="products reveal" id="products">
+
+        <div class="section-title">
+
+            <small>FEATURED</small>
+
+            <h2>Popular Designs</h2>
+
+            <p>
+                Some of our most loved jewellery designs.
+            </p>
+
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <img src="shravni/shravni ring.png" alt="Personalized Ring">
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Personalized Ring</h3>
+
+                    <p>
+                        Add your name or initials.
+                    </p>
+
+                    <div class="price">
+                        ₹100
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <img src="shravni/shravni necless.png" alt="Name Necklace">
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Name Necklace</h3>
+
+                    <p>
+                        Your name, your style.
+                    </p>
+
+                    <div class="price">
+                        ₹550
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+
+                    <img src="shravni/shravni breslet.png" alt="Custom Bracelet">
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Custom Bracelet</h3>
+
+                    <p>
+                        Create a meaningful bracelet.
+                    </p>
+
+                    <div class="price">
+                        ₹300
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= WHY US ================= -->
+
+    <section class="why-us reveal">
+
+        <div class="section-title">
+
+            <small>WHY US</small>
+
+            <h2>Made With Love</h2>
+
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    💎
+                </div>
+
+                <h3>Unique Designs</h3>
+
+                <p>
+                    Every design can be personalized according to your preferences.
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ✨
+                </div>
+
+                <h3>Premium Quality</h3>
+
+                <p>
+                    Beautiful designs created with attention to every detail.
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🎁
+                </div>
+
+                <h3>Perfect Gift</h3>
+
+                <p>
+                    Create something meaningful for yourself or someone special.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact reveal" id="contact">
+
+        <div class="section-title">
+
+            <small>GET IN TOUCH</small>
+
+            <h2>Contact Us</h2>
+
+            <p>
+                Tell us about the jewellery you want to create.
+            </p>
+
+        </div>
+
+        <div class="contact-container">
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="contact-info">
+
+                <h3>
+                    Let's Create
+                    <span>Something Special</span>
+                </h3>
+
+                <p>
+                    Have an idea for your dream jewellery? Fill out the form and our team will get in touch with you.
+                </p>
+
+                <div class="contact-detail">
+
+                    <strong>📧 Email</strong> shindesharvni090@gmail
+
+                </div>
+
+                <div class="contact-detail">
+
+                    <strong>📱 Phone</strong> +91 7721870281
+
+                </div>
+
+                <div class="contact-detail">
+
+                    <strong>💎 Jewellery</strong> Rings • Necklaces • Bracelets • Earrings
+
+                </div>
+
+            </div>
+
+            <!-- ================= FORMSPREE CONTACT FORM ================= -->
+
+            <div class="contact-form">
+
+                <form id="contactForm" action="https://formspree.io/f/xbgddkln" method="POST">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="jewellery">
+                            Jewellery Type
+                        </label>
+
+                        <select id="jewellery" name="jewellery" required>
+
+                            <option value="">
+                                Select Jewellery
+                            </option>
+
+                            <option value="Ring">
+                                Ring
+                            </option>
+
+                            <option value="Necklace">
+                                Necklace
+                            </option>
+
+                            <option value="Bracelet">
+                                Bracelet
+                            </option>
+
+                            <option value="Earrings">
+                                Earrings
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Your Message
+                        </label>
+
+                        <textarea id="message" name="message" placeholder="Tell us about your customization..." required></textarea>
+
+                    </div>
+
+                    <!-- Formspree email subject -->
+
+                    <input type="hidden" name="_subject" value="New Customized Jewellery Enquiry">
+
+                    <button type="submit" class="form-submit">
+                        Send Message ✨
+                    </button>
+
+                </form>
+
+                <div id="formMessage">
+                    Thank you! Your message has been sent successfully. 💎
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>
+            Customized Jewellery
+        </h2>
+
+        <p>
+            Create. Customize. Cherish.
+        </p>
+
+        <div class="copyright">
+            © 2026 Customized Jewellery. All Rights Reserved.
+        </div>
+
+    </footer>
+
+    <!-- ================= TOP BUTTON ================= -->
+
+    <button id="topBtn" onclick="goTop()">
+        ↑
+    </button>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+        /* ================= SCROLL REVEAL ================= */
+
+        const reveals =
+            document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+
+            reveals.forEach(function(element) {
+
+                const windowHeight =
+                    window.innerHeight;
+
+                const elementTop =
+                    element.getBoundingClientRect().top;
+
+                if (
+                    elementTop <
+                    windowHeight - 100
+                ) {
+
+                    element.classList.add("active");
+
+                }
+
+            });
+
+        }
+
+        window.addEventListener(
+            "scroll",
+            revealOnScroll
+        );
+
+        revealOnScroll();
+
+
+        /* ================= TOP BUTTON ================= */
+
+        const topBtn =
+            document.getElementById("topBtn");
+
+        window.addEventListener(
+            "scroll",
+            function() {
+
+                if (window.scrollY > 400) {
+
+                    topBtn.style.display =
+                        "block";
+
+                } else {
+
+                    topBtn.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+
+        /* ================= GO TOP ================= */
+
+        function goTop() {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+        /* ================= FORMSPREE FORM ================= */
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const formMessage =
+            document.getElementById("formMessage");
+
+
+        contactForm.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+                const submitButton =
+                    contactForm.querySelector(
+                        ".form-submit"
+                    );
+
+                submitButton.disabled = true;
+
+                submitButton.innerText =
+                    "Sending... ✨";
+
+
+                try {
+
+                    const formData =
+                        new FormData(contactForm);
+
+                    const response =
+                        await fetch(
+                            contactForm.action, {
+                                method: "POST",
+                                body: formData,
+                                headers: {
+                                    "Accept": "application/json"
+                                }
+                            }
+                        );
+
+
+                    if (response.ok) {
+
+                        formMessage.style.display =
+                            "block";
+
+                        formMessage.style.color =
+                            "#2ecc71";
+
+                        formMessage.innerText =
+                            "Thank you! Your message has been sent successfully. 💎";
+
+                        contactForm.reset();
+
+                    } else {
+
+                        formMessage.style.display =
+                            "block";
+
+                        formMessage.style.color =
+                            "#ff6b6b";
+
+                        formMessage.innerText =
+                            "Something went wrong. Please try again.";
+
+                    }
+
+                } catch (error) {
+
+                    formMessage.style.display =
+                        "block";
+
+                    formMessage.style.color =
+                        "#ff6b6b";
+
+                    formMessage.innerText =
+                        "Unable to send message. Please try again.";
+
+                }
+
+
+                submitButton.disabled = false;
+
+                submitButton.innerText =
+                    "Send Message ✨";
+
+
+                setTimeout(function() {
+
+                    formMessage.style.display =
+                        "none";
+
+                }, 5000);
+
+            }
+        );
+    </script>
+
+</body>
+
+</html>
